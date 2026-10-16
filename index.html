@@ -1,173 +1,900 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Seminaire Harish Chandra — Soham Sen</title>
-  <meta name="author" content="Soham Sen">
-  <meta name="description" content="My Webpage">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- MathJax for math rendering -->
-  <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <title>Seminaire Harish Chandra — Soham Sen</title>
+
+  <meta name="author" content="Soham Sen">
+  <meta name="description"
+        content="Soham Sen — Mathematics, arithmetic geometry, and number theory.">
+
+  <!-- MathJax -->
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']]
+      }
+    };
+  </script>
+
+  <script
+    id="MathJax-script"
+    async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
 
   <style>
-    :root{
-      --bg: #ffffff;
-      --muted: #6b7280;
-      --accent: #1f6feb;
-      --ink: #0f1724;
-      --panel: #ffffff;
-      --max-width: 1100px;
-      --gap: 24px;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    :root {
+      --white: #ffffff;
+      --ink: #172033;
+      --muted: #667085;
+      --line: #e4e7ec;
+
+      /* IHES-inspired colours */
+      --blue: #20568a;
+      --navy: #102d4d;
+      --blue-light: #dce8f4;
+
+      --max-width: 1280px;
+
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Arial,
+        sans-serif;
+
       color-scheme: light;
     }
-    *{box-sizing:border-box}
-    html,body{height:100%;margin:0;background:var(--bg);color:var(--ink)}
 
-    .wrap{max-width:var(--max-width);margin:28px auto;padding:16px;display:flex;gap:var(--gap)}
-
-    .sidebar{width:100px;flex:0 0 200px;background:var(--panel);padding:20px;border-radius:8px;border:1px solid rgba(15,23,36,0.08)}
-    .photo{width:20%;height:30px;background:#fafafa;border-radius:2px;display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--muted);}
-    .name{margin-top:14px;margin-bottom:6px;font-size:20px;font-weight:700}
-    .role{color:var(--muted);font-size:13px;margin-bottom:12px}
-    .contact{font-size:13px;margin-top:8px}
-    .contact a{color:var(--accent);text-decoration:none}
-
-    nav.site-nav{margin-top:18px;border-top:1px dashed rgba(15,23,36,0.06);padding-top:12px}
-    nav.site-nav a{display:block;padding:8px 6px;color:var(--ink);text-decoration:none;border-radius:6px;font-weight:600}
-    nav.site-nav a.active,nav.site-nav a:hover{background:#f5f5f5;border-left:3px solid var(--accent);padding-left:10px}
-
-    .main{flex:1;padding:20px;background:var(--bg)}
-    header.hero{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:18px}
-    header.hero h1{margin:0;font-size:20px}
-    header.hero .meta{color:var(--muted);font-size:13px}
-
-    section.card{background:#fff;padding:18px;border-radius:8px;border:1px solid rgba(15,23,36,0.04);margin-bottom:16px}
-    section.card h2{margin-top:0;margin-bottom:8px;font-size:18px}
-    section.card p{color:var(--muted);line-height:1.5}
-
-    table.schedule{width:100%;border-collapse:collapse;margin-top:12px}
-    table.schedule th, table.schedule td{padding:8px;text-align:left;border-bottom:1px solid rgba(15,23,36,0.04)}
-    table.schedule th{color:var(--muted);font-size:13px}
-
-    ul.clean{padding-left:0;list-style:none;margin:0}
-    ul.clean li{padding:6px 0}
-
-    .notes-list a{color:var(--accent);text-decoration:none}
-
-    @media (max-width:500px){
-      .wrap{flex-direction:column;padding:12px}
-      .sidebar{width:60%;display:flex;gap:12px}
-      .photo{height:50px}
+    * {
+      box-sizing: border-box;
     }
 
-    .muted{color:var(--muted)}
-    .small{font-size:13px}
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 20px;
+    }
+
+    body {
+      margin: 0;
+      background: var(--white);
+      color: var(--ink);
+      font-family: Georgia, "Times New Roman", serif;
+      line-height: 1.7;
+    }
+
+    a {
+      color: var(--blue);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    /* =========================================
+       TOP UTILITY BAR
+       ========================================= */
+
+    .topbar {
+      min-height: 40px;
+      background: var(--navy);
+      color: #d8e0e8;
+      font-family: Arial, sans-serif;
+      font-size: 11px;
+    }
+
+    .topbar-inner {
+      max-width: var(--max-width);
+      min-height: 40px;
+      margin: 0 auto;
+      padding: 0 28px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .social-links,
+    .utility-links {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .topbar a {
+      color: inherit;
+      white-space: nowrap;
+    }
+
+    .social-links a {
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    .utility-links a {
+      font-size: 11px;
+    }
+
+    /* =========================================
+       MAIN BLUE MASTHEAD
+       ========================================= */
+
+    .masthead {
+      background: var(--blue);
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+
+    .masthead-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 25px 28px 0;
+    }
+
+    .brand-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 35px;
+
+      padding-bottom: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+
+      color: white;
+      text-decoration: none;
+    }
+
+    .brand:hover {
+      color: white;
+      text-decoration: none;
+    }
+
+    .brand-mark {
+      width: 58px;
+      height: 58px;
+
+      display: grid;
+      place-items: center;
+
+      border: 1px solid rgba(255,255,255,.75);
+      border-radius: 50%;
+
+      font-family: Georgia, serif;
+      font-size: 36px;
+      font-style: italic;
+      line-height: 1;
+    }
+
+    .brand-name {
+      display: block;
+
+      font-family: Arial, sans-serif;
+      font-size: clamp(32px, 4vw, 44px);
+      font-weight: 400;
+      letter-spacing: -2px;
+      line-height: 1.1;
+    }
+
+    .brand-subtitle {
+      display: block;
+      margin-top: 5px;
+
+      color: #dce8f4;
+      font-size: 11px;
+      line-height: 1.6;
+    }
+
+    .brand-description {
+      max-width: 300px;
+      color: #dce8f4;
+      text-align: right;
+      font-size: 12px;
+      line-height: 1.8;
+    }
+
+    /* =========================================
+       NAVIGATION
+       ========================================= */
+
+    .main-nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px 25px;
+
+      min-height: 56px;
+      border-top: 1px solid rgba(255,255,255,.18);
+    }
+
+    .main-nav a {
+      display: inline-block;
+      padding: 17px 0 14px;
+
+      border-bottom: 2px solid transparent;
+
+      color: white;
+      font-family: Arial, sans-serif;
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: .02em;
+      text-transform: uppercase;
+    }
+
+    .main-nav a:hover,
+    .main-nav a.active {
+      border-bottom-color: white;
+      text-decoration: none;
+    }
+
+    /* =========================================
+       PERSONAL PAINTING BANNER
+       ========================================= */
+
+    .painting-banner {
+      position: relative;
+      width: 100%;
+      height: clamp(180px, 26vw, 330px);
+
+      overflow: hidden;
+      background: #e9eef3;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .painting-banner img {
+      display: block;
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+      object-position: center 45%;
+    }
+
+    .painting-caption {
+      position: absolute;
+      right: 24px;
+      bottom: 18px;
+
+      padding: 8px 13px;
+
+      background: rgba(16, 45, 77, .85);
+      color: white;
+
+      font-family: Arial, sans-serif;
+      font-size: 11px;
+      letter-spacing: .06em;
+    }
+
+    /* =========================================
+       MAIN CONTENT
+       ========================================= */
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    .page-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 10px;
+
+      padding: 35px 0 20px;
+      margin-bottom: 20px;
+
+      border-bottom: 1px solid var(--line);
+    }
+
+    .page-heading h1 {
+      margin: 0;
+
+      font-size: 29px;
+      font-weight: 400;
+      letter-spacing: -.6px;
+      line-height: 1.3;
+    }
+
+    .page-heading p {
+      margin: 0;
+      color: var(--muted);
+
+      font-family: Arial, sans-serif;
+      font-size: 12px;
+    }
+
+    /* =========================================
+       CONTENT SECTIONS
+       ========================================= */
+
+    .content-section {
+      padding: 25px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .content-section h2 {
+      margin: 0 0 14px;
+
+      font-size: 22px;
+      font-weight: 400;
+      letter-spacing: -.3px;
+    }
+
+    .content-section p {
+      max-width: 850px;
+      margin: 0 0 14px;
+
+      font-size: 15px;
+      line-height: 1.85;
+    }
+
+    .content-section .small {
+      font-size: 13px;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    /* Lists */
+
+    .clean-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .clean-list li {
+      padding: 8px 0;
+      border-bottom: 1px solid #f0f1f3;
+
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .clean-list li:last-child {
+      border-bottom: 0;
+    }
+
+    /* Seminar table */
+
+    .schedule {
+      width: 100%;
+      margin-top: 14px;
+      border-collapse: collapse;
+
+      font-size: 14px;
+    }
+
+    .schedule th,
+    .schedule td {
+      padding: 11px 10px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .schedule th {
+      color: var(--muted);
+
+      font-family: Arial, sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+    }
+
+    /* =========================================
+       FOOTER
+       ========================================= */
+
+    footer {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 26px 32px 35px;
+
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+
+      color: var(--muted);
+      font-family: Arial, sans-serif;
+      font-size: 11px;
+    }
+
+    /* =========================================
+       RESPONSIVE DESIGN
+       ========================================= */
+
+    @media (max-width: 760px) {
+
+      .topbar-inner {
+        padding: 8px 18px;
+        gap: 12px;
+      }
+
+      .social-links,
+      .utility-links {
+        gap: 12px;
+      }
+
+      .utility-links a:nth-child(2),
+      .utility-links a:nth-child(3) {
+        display: none;
+      }
+
+      .masthead-inner {
+        padding: 20px 20px 0;
+      }
+
+      .brand-row {
+        padding-bottom: 18px;
+      }
+
+      .brand {
+        gap: 10px;
+      }
+
+      .brand-mark {
+        width: 43px;
+        height: 43px;
+        font-size: 27px;
+      }
+
+      .brand-name {
+        font-size: 33px;
+      }
+
+      .brand-description {
+        display: none;
+      }
+
+      .main-nav {
+        justify-content: flex-start;
+        gap: 0 20px;
+      }
+
+      .main-nav a {
+        padding: 13px 0 11px;
+        font-size: 11px;
+      }
+
+      .painting-banner {
+        height: 210px;
+      }
+
+      .container {
+        padding: 0 21px;
+      }
+
+      .page-heading {
+        padding-top: 28px;
+      }
+
+      .page-heading h1 {
+        font-size: 26px;
+      }
+
+      .content-section {
+        padding: 22px 0;
+      }
+
+      .content-section h2 {
+        font-size: 20px;
+      }
+
+      .schedule th,
+      .schedule td {
+        padding: 8px 5px;
+        font-size: 12px;
+      }
+
+      footer {
+        padding: 24px 21px;
+      }
+    }
+
+    @media (max-width: 420px) {
+
+      .topbar-inner {
+        padding: 8px 12px;
+      }
+
+      .social-links,
+      .utility-links {
+        gap: 9px;
+      }
+
+      .brand-name {
+        font-size: 29px;
+      }
+
+      .main-nav {
+        gap: 0 15px;
+      }
+
+      .painting-banner {
+        height: 170px;
+      }
+    }
 
   </style>
 </head>
+
 <body>
-  <div class="wrap">
-    <aside class="sidebar">
-     
-      
-      <div class="photo">
-        <img src="foggy.jpeg" alt="I could never find the original source" width="500" height="400" style="margin-left:-100px;">
+
+  <!-- TOP UTILITY BAR -->
+
+  <div class="topbar">
+    <div class="topbar-inner">
+
+      <div class="social-links">
+        <a href="https://github.com/"
+           aria-label="GitHub">GH</a>
+
+        <a href="https://www.linkedin.com/"
+           aria-label="LinkedIn">in</a>
       </div>
 
-         
+      <div class="utility-links">
+        <a href="mailto:sohams21@iitk.ac.in">Email</a>
+        <a href="#talks">Talks</a>
+        <a href="#seminar">Seminar</a>
+        <a href="#contact">Contact</a>
+        <a href="#home">EN</a>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- BLUE MASTHEAD -->
+
+  <header class="masthead">
+
+    <div class="masthead-inner">
+
+      <div class="brand-row">
+
+        <a class="brand" href="#home">
+
+          <span class="brand-mark" aria-hidden="true">S</span>
+
+          <span>
+            <span class="brand-name">Soham Sen</span>
+
+            <span class="brand-subtitle">
+              Mathematics<br>
+              Indian Institute of Technology Kanpur
+            </span>
+          </span>
+
+        </a>
+
+        <div class="brand-description">
+          Arithmetic geometry<br>
+          Number theory · Representation theory
+        </div>
+
+      </div>
+
+
+      <!-- MAIN NAVIGATION -->
+
+      <nav class="main-nav" aria-label="Main navigation">
+
+        <a href="#about">About</a>
+
+        <a href="#research">Research</a>
+
+        <a href="#talks">Talks</a>
+
+        <a href="#notes">Notes</a>
+
+        <a href="#seminar">Seminar</a>
+
+        <a href="#contact">Contact</a>
+
       </nav>
 
-      
-    </aside>
-    
+    </div>
 
-    <main class="main">
-      <header class="hero">
-        <h1>Soham Sen</h1>
-       
-      </header>
-
-      <section id="about" class="card">
-        <h2>About</h2>
-         <p class="small">I am interested in arithmetic geometry.</p>
-        <p class="small">Department of Mathematics and Statistics, IIT Kanpur</p>
-        <p class="small">Email : (Preferred) <a href="mailto:sohams21@iitk.ac.in">sohams21@iitk.ac.in</a> (Secondary): <a href="mailto:sohams@cse.iitd.ac.in">sohams@cse.iitd.ac.in</a> </p>
-      </section>
-
-      
-
-      <section id="talks" class="card">
-        <h2>Talks</h2>
-        <ul class="clean small">
-          <li>Periods, Congruence Ideals and Base Change — Discussion Meeting. Math Dept. HRI Allahabad (Oct 2025)</li>
-          <li>On result of Sturm-Hida. IMSc Chennai (Dec 2025)</li>
-        </ul>
-      </section>
-
-       <section id="research" class="card">
-        <h2>Research</h2>
-        <ul class="clean small">
-          <li><a href="https://drive.google.com/file/d/11KS7dnra4YTkCKTUExBOdos3MCnjGVNV/view?usp=sharing" target="_blank">Transitive subgroups of \(S_{p^2-1}\) </a></li>
-          <li><a href="https://drive.google.com/file/d/10lPmtVcdEKMHfXTTJlKob9zQ8uNAQ84b/view?usp=sharing" target="_blank">Twisted adjoint L values for totally real galois extensions</a></li>
-          <li>Integral Structures in the sheaf of differentials in Adic Spaces</a></li>
-        </ul>
-      </section>
-
-      <section id="notes" class="card">
-        <h2>Notes </h2>
-        <ul class="clean notes-list small">
-          <li><a href="https://drive.google.com/file/d/10lPmtVcdEKMHfXTTJlKob9zQ8uNAQ84b/view?usp=sharing" target="_blank">Notes on Tilouine–Urban Conjecture</a></li>
-        
-        </ul>
-      </section>
-
-     <section id="seminar" class="card">
-        <h2>Seminar</h2>
-        <table class="schedule">
-          <thead>
-            <tr><th>Date</th><th>Topic</th><th>Speaker</th></tr>
-          </thead>
-          <tbody>
-            
-            <tr><td>August 8</td><td>On Casselman's essay</td><td>Soham</td></tr>
-            
-          </tbody>
-        </table>
-
-        <p style="margin-top:12px"><strong>References</strong></p>
-        <ul class="clean">
-          <li class="small">Atkin, A.O.L. &amp; Lehner, J., Hecke operators on \(\Gamma_0(m)\). Math. Ann. 185, 134–160 (1970).</li>
-        </ul>
-      </section>
+  </header>
 
 
+  <!-- PERSONAL PAINTING BANNER
+       Keep foggy.jpeg beside index.html.
+       Replace it with any painting of your choice. -->
+
+  <div class="painting-banner">
+
+    <img
+      src="foggy.jpeg"
+      alt="A painting by Soham Sen">
+
+    <span class="painting-caption">
+      Painting · Soham Sen
+    </span>
+
+  </div>
+
+
+  <!-- MAIN PAGE -->
+
+  <main class="container" id="home">
+
+    <div class="page-heading">
+
+      <h1>Soham Sen</h1>
+
+      <p>
+        Department of Mathematics and Statistics, IIT Kanpur
+      </p>
+
+    </div>
+
+
+    <!-- ABOUT -->
+
+    <section class="content-section" id="about">
+
+      <h2>About</h2>
+
+      <p>
+        I am interested in arithmetic geometry.
+      </p>
+
+      <p class="small muted">
+        Department of Mathematics and Statistics,
+        Indian Institute of Technology Kanpur.
+      </p>
+
+      <p class="small">
+        Email (preferred):
+        <a href="mailto:sohams21@iitk.ac.in">
+          sohams21@iitk.ac.in
+        </a>
+        <br>
+
+        Email (secondary):
+        <a href="mailto:sohams@cse.iitd.ac.in">
+          sohams@cse.iitd.ac.in
+        </a>
+      </p>
+
+    </section>
+
+
+    <!-- RESEARCH -->
+
+    <section class="content-section" id="research">
+
+      <h2>Research</h2>
+
+      <ul class="clean-list">
+
+        <li>
+          <a
+            href="https://drive.google.com/file/d/11KS7dnra4YTkCKTUExBOdos3MCnjGVNV/view?usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer">
+            Transitive subgroups of \(S_{p^2-1}\)
+          </a>
+        </li>
+
+        <li>
+          <a
+            href="https://drive.google.com/file/d/10lPmtVcdEKMHfXTTJlKob9zQ8uNAQ84b/view?usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer">
+            Twisted adjoint L values for totally real Galois extensions
+          </a>
+        </li>
+
+        <li>
+          Integral Structures in the sheaf of differentials in Adic Spaces
+        </li>
+
+      </ul>
+
+    </section>
+
+
+    <!-- TALKS -->
+
+    <section class="content-section" id="talks">
+
+      <h2>Talks</h2>
+
+      <ul class="clean-list">
+
+        <li>
+          Periods, Congruence Ideals and Base Change —
+          Discussion Meeting, Math Department, HRI Allahabad
+          (October 2025).
+        </li>
+
+        <li>
+          On result of Sturm–Hida —
+          IMSc Chennai (December 2025).
+        </li>
+
+      </ul>
+
+    </section>
+
+
+    <!-- MATHEMATICAL NOTES -->
+
+    <section class="content-section" id="notes">
+
+      <h2>Notes</h2>
+
+      <ul class="clean-list">
+
+        <li>
+          <a
+            href="https://drive.google.com/file/d/10lPmtVcdEKMHfXTTJlKob9zQ8uNAQ84b/view?usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer">
+            Notes on Tilouine–Urban Conjecture
+          </a>
+        </li>
+
+      </ul>
+
+    </section>
+
+
+    <!-- SEMINAR -->
+
+    <section class="content-section" id="seminar">
+
+      <h2>Seminar</h2>
+
+      <table class="schedule">
+
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Topic</th>
+            <th>Speaker</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>August 8</td>
+            <td>On Casselman's essay</td>
+            <td>Soham</td>
+          </tr>
+        </tbody>
+
+      </table>
+
+      <p style="margin-top: 22px;">
+        <strong>References</strong>
+      </p>
+
+      <ul class="clean-list">
+
+        <li class="small">
+          Atkin, A. O. L. and Lehner, J.,
+          Hecke operators on \(\Gamma_0(m)\).
+          Mathematical Annalen 185, 134–160 (1970).
+        </li>
+
+      </ul>
+
+    </section>
+
+
+    <!-- CONTACT -->
+
+    <section class="content-section" id="contact">
+
+      <h2>Contact</h2>
+
+      <p class="small">
+        For correspondence, please email:
+        <a href="mailto:sohams21@iitk.ac.in">
+          sohams21@iitk.ac.in
+        </a>.
+      </p>
+
+    </section>
+
+  </main>
+
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <span>
+      © <span id="year"></span> Soham Sen
+    </span>
+
+    <span>
+      Mathematics · IIT Kanpur
+    </span>
+
+  </footer>
+
+
+  <!-- SMALL JAVASCRIPT -->
 
   <script>
-    const navLinks = document.querySelectorAll('nav.site-nav a');
-    function setActive(hash){
-      navLinks.forEach(a=>a.classList.toggle('active', ('#'+(a.getAttribute('href')||'')).toLowerCase()===hash.toLowerCase()));
-    }
-    navLinks.forEach(a=>{
-      a.addEventListener('click', (e)=>{
-        e.preventDefault();
-        const h = a.getAttribute('href');
-        history.pushState(null, '', h);
-        const target = document.querySelector(h);
-        if(target) target.scrollIntoView({behavior:'smooth',block:'start'});
-        setActive(h);
+
+    // Automatically update the copyright year.
+
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+
+
+    // Highlight the navigation link for the visible section.
+
+    const sections = document.querySelectorAll(
+      ".content-section[id]"
+    );
+
+    const navLinks = document.querySelectorAll(
+      ".main-nav a"
+    );
+
+    if ("IntersectionObserver" in window) {
+
+      const observer = new IntersectionObserver(
+        entries => {
+
+          entries.forEach(entry => {
+
+            if (entry.isIntersecting) {
+
+              navLinks.forEach(link => {
+
+                const active =
+                  link.getAttribute("href") ===
+                  "#" + entry.target.id;
+
+                link.classList.toggle("active", active);
+
+              });
+
+            }
+
+          });
+
+        },
+        {
+          rootMargin: "-15% 0px -70% 0px"
+        }
+      );
+
+      sections.forEach(section => {
+        observer.observe(section);
       });
-    });
 
-    function openPDF(url){ window.open(url, '_blank'); }
+    }
 
-    window.addEventListener('load', ()=>{
-      const hash = location.hash || '#about';
-      setActive(hash);
-      const el = document.querySelector(hash);
-      if(el) el.scrollIntoView();
-    });
   </script>
+
 </body>
 </html>
