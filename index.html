@@ -1,18 +1,15 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Soham Sen — Mathematics</title>
-
-  <meta name="author" content="Soham Sen">
   <meta name="description"
         content="Soham Sen — mathematics, arithmetic geometry, and number theory.">
+  <meta name="author" content="Soham Sen">
 
-  <!-- External stylesheet -->
-  <link rel="stylesheet" href="style.css">
+  <title>Seminaire Harish Chandra — Soham Sen</title>
 
   <!-- MathJax for mathematical notation -->
   <script>
@@ -29,6 +26,8 @@
     async
     src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
   </script>
+
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -48,7 +47,7 @@
            aria-label="LinkedIn">in</a>
 
         <a href="https://github.com/"
-           aria-label="GitHub">GH</a>
+           aria-label="GitHub">⌘</a>
       </div>
 
       <div class="utility-links">
@@ -57,13 +56,14 @@
         <a href="#about">About</a>
         <a href="#contact">Contact</a>
         <a href="#home">EN</a>
+        <a href="#research" aria-label="Search">⌕</a>
       </div>
 
     </div>
   </div>
 
 
-  <!-- BLUE HEADER -->
+  <!-- BLUE MASTHEAD -->
 
   <header>
 
@@ -102,7 +102,7 @@
   </header>
 
 
-  <!-- PAINTING BANNER -->
+  <!-- PERSONAL PAINTING -->
 
   <div class="painting-banner">
 
@@ -121,17 +121,16 @@
 
   <main id="home">
 
-    <!-- INTRODUCTION -->
+    <!-- PAGE HEADING -->
 
     <section class="hero">
 
       <div>
         <h1>Soham Sen</h1>
 
-        <p class="meta muted small">
-          Department of Mathematics and Statistics,
-          IIT Kanpur
-        </p>
+        <div class="meta muted small">
+          Department of Mathematics and Statistics, IIT Kanpur
+        </div>
       </div>
 
     </section>
@@ -150,8 +149,7 @@
         </p>
 
         <p class="small">
-          Department of Mathematics and Statistics,
-          IIT Kanpur.
+          Department of Mathematics and Statistics, IIT Kanpur
         </p>
 
         <p class="small">
@@ -189,13 +187,13 @@
 
           <li>
             Periods, Congruence Ideals and Base Change —
-            Discussion Meeting, Math Department,
-            HRI Allahabad (October 2025).
+            Discussion Meeting, Math Dept., HRI Allahabad
+            (Oct 2025)
           </li>
 
           <li>
             On result of Sturm–Hida —
-            IMSc Chennai (December 2025).
+            IMSc Chennai (Dec 2025)
           </li>
 
         </ul>
@@ -232,15 +230,13 @@
               target="_blank"
               rel="noopener noreferrer">
 
-              Twisted adjoint L values for totally real
-              Galois extensions
+              Twisted adjoint L values for totally real Galois extensions
 
             </a>
           </li>
 
           <li>
-            Integral Structures in the sheaf of
-            differentials in Adic Spaces
+            Integral Structures in the sheaf of differentials in Adic Spaces
           </li>
 
         </ul>
@@ -289,23 +285,19 @@
         <table class="schedule">
 
           <thead>
-
             <tr>
               <th>Date</th>
               <th>Topic</th>
               <th>Speaker</th>
             </tr>
-
           </thead>
 
           <tbody>
-
             <tr>
               <td>August 8</td>
               <td>On Casselman's essay</td>
               <td>Soham</td>
             </tr>
-
           </tbody>
 
         </table>
@@ -317,11 +309,9 @@
         <ul class="clean">
 
           <li class="small">
-
-            Atkin, A. O. L. &amp; Lehner, J.,
+            Atkin, A.O.L. &amp; Lehner, J.,
             Hecke operators on \(\Gamma_0(m)\).
             Math. Ann. 185, 134–160 (1970).
-
           </li>
 
         </ul>
@@ -335,7 +325,7 @@
 
   <!-- CONTACT -->
 
-  <section class="section" id="contact">
+  <section class="section contact-section" id="contact">
 
     <div class="section-content">
 
@@ -385,62 +375,10 @@
 
 <script>
 
-  // Update copyright year automatically.
+  // Automatically update the copyright year.
 
   document.getElementById("year").textContent =
     new Date().getFullYear();
-
-
-  // Highlight the active navigation link.
-
-  const sections = document.querySelectorAll(
-    ".section[id]"
-  );
-
-  const navLinks = document.querySelectorAll(
-    ".site-nav a"
-  );
-
-  if ("IntersectionObserver" in window) {
-
-    const observer = new IntersectionObserver(
-
-      entries => {
-
-        entries.forEach(entry => {
-
-          if (entry.isIntersecting) {
-
-            navLinks.forEach(link => {
-
-              const isActive =
-                link.getAttribute("href") ===
-                "#" + entry.target.id;
-
-              link.classList.toggle(
-                "active",
-                isActive
-              );
-
-            });
-
-          }
-
-        });
-
-      },
-
-      {
-        rootMargin: "-15% 0px -70% 0px"
-      }
-
-    );
-
-    sections.forEach(section => {
-      observer.observe(section);
-    });
-
-  }
 
 </script>
 
