@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Lecture notes and mathematical expositions by Soham Sen.">
+  <title>Lecture Notes — Soham Sen</title>
+
+  <style>
+    :root {
+      --ink: #172033;
+      --muted: #667085;
+      --line: #e4e7ec;
+      --accent: #20568a;
+      --topbar: #102d4d;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: #fff;
+      font-family: Georgia, "Times New Roman", serif;
+      line-height: 1.7;
+    }
+
+    .topbar {
+      background: var(--topbar);
+      padding: 12px 5%;
+      font: 12px Arial, sans-serif;
+    }
+
+    .topbar a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    header {
+      background: var(--accent);
+      color: #fff;
+      padding: 28px 5%;
+    }
+
+    header h1 {
+      margin: 0;
+      font: 36px Arial, sans-serif;
+      font-weight: normal;
+    }
+
+    header p {
+      margin: 8px 0 0;
+      color: #e4edf7;
+      font: 14px Arial, sans-serif;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      padding: 16px 5%;
+      background: var(--accent);
+      border-top: 1px solid rgba(255,255,255,.2);
+      font: 12px Arial, sans-serif;
+      text-transform: uppercase;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    main {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 35px 25px 60px;
+    }
+
+    .intro {
+      color: var(--muted);
+      max-width: 750px;
+      margin-bottom: 35px;
+    }
+
+    h2 {
+      font-size: 23px;
+      margin-bottom: 8px;
+    }
+
+    .category {
+      margin: 35px 0;
+    }
+
+    .note {
+      padding: 18px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .note h3 {
+      margin: 0 0 6px;
+      font-size: 19px;
+      font-weight: normal;
+    }
+
+    .note p {
+      margin: 5px 0 10px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .note a {
+      color: var(--accent);
+      text-decoration: none;
+      font: 13px Arial, sans-serif;
+    }
+
+    .note a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 22px 5%;
+      color: var(--muted);
+      font: 12px Arial, sans-serif;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 29px;
+      }
+
+      nav {
+        gap: 15px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="topbar">
+    <a href="index.html">← Back to Soham Sen's homepage</a>
+  </div>
+
+  <header>
+    <h1>Lecture Notes</h1>
+    <p>Mathematics · Expositions · Reading Notes</p>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="puzzles.html">Math Puzzles</a>
+    <a href="#algebra">Algebra</a>
+    <a href="#geometry">Geometry</a>
+    <a href="#number-theory">Number Theory</a>
+    <a href="#other">Other Topics</a>
+  </nav>
+
+  <main>
+    <p class="intro">
+      A collection of lecture notes, expository writings, and notes
+      prepared while studying various topics in mathematics.
+      The notes will be updated as new material becomes available.
+    </p>
+
+    <section class="category" id="algebra">
+      <h2>Algebra</h2>
+
+      <!-- Add your algebra lecture notes here. -->
+
+    </section>
+
+    <section class="category" id="geometry">
+      <h2>Geometry</h2>
+
+      <!-- Add your geometry lecture notes here. -->
+
+    </section>
+
+    <section class="category" id="number-theory">
+      <h2>Number Theory and Arithmetic Geometry</h2>
+
+      <!-- Add your number theory lecture notes here. -->
+
+    </section>
+
+    <section class="category" id="other">
+      <h2>Other Topics</h2>
+
+      <article class="note">
+        <h3>Notes on the Tilouine–Urban Conjecture</h3>
+        <p>Reading notes on the Tilouine–Urban Conjecture.</p>
+        <a href="https://drive.google.com/file/d/10lPmtVcdEKMHfXTTJlKob9zQ8uNAQ84b/view?usp=sharing"
+           target="_blank" rel="noopener noreferrer">
+          Read notes ↗
+        </a>
+      </article>
+
+    </section>
+  </main>
+
+  <footer>
+    © <span id="year"></span> Soham Sen · Mathematics · IIT Kanpur
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+  </script>
+
+</body>
+</html>
