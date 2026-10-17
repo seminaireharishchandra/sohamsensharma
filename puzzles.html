@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Math Puzzles | Soham Sen</title>
+
+    <style>
+        :root {
+            --navy: #102d4d;
+            --blue: #20568a;
+            --ink: #202a35;
+            --muted: #626d79;
+            --line: #dedfe2;
+            --paper: #ffffff;
+            --soft: #f5f7fa;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: var(--paper);
+            color: var(--ink);
+            font-family: Georgia, "Times New Roman", serif;
+            line-height: 1.7;
+        }
+
+        a {
+            color: var(--blue);
+        }
+
+        .topbar {
+            padding: 9px 5%;
+            background: var(--navy);
+            color: white;
+            font: 12px Arial, sans-serif;
+        }
+
+        .topbar a {
+            color: white;
+            text-decoration: none;
+        }
+
+        header {
+            padding: 26px 5% 18px;
+            background: var(--blue);
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: clamp(30px, 4vw, 42px);
+            font-weight: 400;
+        }
+
+        header p {
+            margin: 8px 0 0;
+            color: #e6edf5;
+            font-size: 14px;
+        }
+
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+            margin-top: 22px;
+        }
+
+        nav a {
+            padding-bottom: 8px;
+            color: white;
+            font-size: 12px;
+            text-decoration: none;
+            text-transform: uppercase;
+            border-bottom: 2px solid transparent;
+        }
+
+        nav a:hover {
+            border-bottom-color: white;
+        }
+
+        main {
+            width: min(950px, 90%);
+            margin: 0 auto;
+            padding: 38px 0 60px;
+        }
+
+        .intro {
+            margin-bottom: 30px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .intro h2 {
+            margin: 0 0 8px;
+            font-size: 28px;
+        }
+
+        .intro p {
+            max-width: 700px;
+            margin: 0;
+            color: var(--muted);
+        }
+
+        .game {
+            margin: 24px 0;
+            padding: 25px;
+            border: 1px solid var(--line);
+            background: white;
+        }
+
+        .game h3 {
+            margin: 0 0 5px;
+            font-size: 22px;
+        }
+
+        .category {
+            color: var(--blue);
+            font: 11px Arial, sans-serif;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+        }
+
+        .question {
+            margin: 18px 0;
+            font-size: 17px;
+        }
+
+        .formula {
+            margin: 18px 0;
+            padding: 18px;
+            background: var(--soft);
+            text-align: center;
+            font-size: 22px;
+        }
+
+        input {
+            width: min(280px, 100%);
+            padding: 11px 12px;
+            border: 1px solid #b8c0ca;
+            border-radius: 0;
+            font: 16px Georgia, serif;
+        }
+
+        button {
+            margin: 8px 6px 8px 0;
+            padding: 11px 17px;
+            border: 0;
+            background: var(--blue);
+            color: white;
+            cursor: pointer;
+            font: 12px Arial, sans-serif;
+            text-transform: uppercase;
+            letter-spacing: .4px;
+        }
+
+        button:hover {
+            background: var(--navy);
+        }
+
+        .hint-button {
+            background: #e9edf2;
+            color: var(--ink);
+        }
+
+        .hint-button:hover {
+            background: #d8e0e8;
+        }
+
+        .feedback {
+            min-height: 28px;
+            margin-top: 12px;
+            font-size: 14px;
+        }
+
+        .correct {
+            color: #176b3a;
+        }
+
+        .incorrect {
+            color: #a32c2c;
+        }
+
+        .hint {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        footer {
+            padding: 22px 5%;
+            border-top: 1px solid var(--line);
+            color: var(--muted);
+            font: 12px Arial, sans-serif;
+        }
+
+        @media (max-width: 600px) {
+            nav {
+                gap: 15px;
+            }
+
+            .game {
+                padding: 18px;
+            }
+
+            .formula {
+                font-size: 19px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="topbar">
+        <a href="index.html">← Back to Soham Sen's homepage</a>
+    </div>
+
+    <header>
+        <h1>Math Puzzles</h1>
+        <p>A collection of mathematical challenges and games.</p>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="#number-theory">Number Theory</a>
+            <a href="#sequences">Sequences</a>
+            <a href="#logic">Logic</a>
+        </nav>
+    </header>
+
+    <main>
+
+        <section class="intro">
+            <h2>Think mathematically.</h2>
+
+            <p>
+                Try the puzzles below. Work them out on paper if you like,
+                enter your answer, and check your reasoning.
+                Hints are available when you get stuck.
+            </p>
+        </section>
+
+        <!-- Game 1 -->
+        <section class="game" id="number-theory">
+            <span class="category">Game 01 · Number Theory</span>
+
+            <h3>The Missing Digit</h3>
+
+            <p class="question">
+                Find the digit \(d\) such that the six-digit number
+                <strong>12345d</strong> is divisible by 9.
+            </p>
+
+            <div class="formula">
+                12345□
+            </div>
+
+            <label for="answer1">Your answer (0–9):</label>
+            <br><br>
+
+            <input id="answer1" type="text"
+                   inputmode="numeric" maxlength="1"
+                   placeholder="Enter a digit">
+
+            <br>
+
+            <button onclick="checkAnswer(1)">Check answer</button>
+            <button class="hint-button" onclick="showHint(1)">
+                Hint
+            </button>
+
+            <p id="feedback1" class="feedback" aria-live="polite"></p>
+            <p id="hint1" class="hint"></p>
+        </section>
+
+        <!-- Game 2 -->
+        <section class="game" id="sequences">
+            <span class="category">Game 02 · Sequences</span>
+
+            <h3>What Comes Next?</h3>
+
+            <p class="question">
+                Find the next number in the sequence:
+            </p>
+
+            <div class="formula">
+                2, 6, 12, 20, 30, ?
+            </div>
+
+            <label for="answer2">Next number:</label>
+            <br><br>
+
+            <input id="answer2" type="text"
+                   inputmode="numeric"
+                   placeholder="Enter your answer">
+
+            <br>
+
+            <button onclick="checkAnswer(2)">Check answer</button>
+            <button class="hint-button" onclick="showHint(2)">
+                Hint
+            </button>
+
+            <p id="feedback2" class="feedback" aria-live="polite"></p>
+            <p id="hint2" class="hint"></p>
+        </section>
+
+        <!-- Game 3 -->
+        <section class="game" id="logic">
+            <span class="category">Game 03 · Mathematical Logic</span>
+
+            <h3>The Three Integers</h3>
+
+            <p class="question">
+                Three positive integers have product 36.
+                Their sum is 13. What are the three integers?
+            </p>
+
+            <p>
+                Enter the integers separated by commas, for example:
+                <code>1, 2, 3</code>.
+            </p>
+
+            <label for="answer3">Your three integers:</label>
+            <br><br>
+
+            <input id="answer3" type="text"
+                   placeholder="e.g. 1, 2, 3">
+
+            <br>
+
+            <button onclick="checkAnswer(3)">Check answer</button>
+            <button class="hint-button" onclick="showHint(3)">
+                Hint
+            </button>
+
+            <p id="feedback3" class="feedback" aria-live="polite"></p>
+            <p id="hint3" class="hint"></p>
+        </section>
+
+    </main>
+
+    <footer>
+        <a href="index.html">Soham Sen</a>
+        · Mathematics · IIT Kanpur
+        · <span id="year"></span>
+    </footer>
+
+    <script>
+        document.getElementById("year").textContent =
+            new Date().getFullYear();
+
+        const answers = {
+            1: "3",
+            2: "42",
+            3: "2,3,6"
+        };
+
+        const hints = {
+            1: "A number is divisible by 9 if the sum of its digits is divisible by 9.",
+            2: "Look at the differences between consecutive terms.",
+            3: "List factor triples of 36 and check which triple sums to 13."
+        };
+
+        function normalizeIntegers(value) {
+            return value
+                .split(/[,\s]+/)
+                .filter(Boolean)
+                .map(Number)
+                .sort((a, b) => a - b)
+                .join(",");
+        }
+
+        function checkAnswer(id) {
+            const input = document.getElementById("answer" + id);
+            const feedback = document.getElementById("feedback" + id);
+
+            let userAnswer = input.value.trim();
+            let isCorrect = false;
+
+            if (id === 3) {
+                userAnswer = normalizeIntegers(userAnswer);
+                isCorrect = userAnswer === answers[3];
+            } else {
+                isCorrect = userAnswer === answers[id];
+            }
+
+            feedback.className = "feedback";
+
+            if (isCorrect) {
+                feedback.textContent =
+                    "Correct! Well done.";
+                feedback.classList.add("correct");
+            } else {
+                feedback.textContent =
+                    "Not quite. Try again!";
+                feedback.classList.add("incorrect");
+            }
+        }
+
+        function showHint(id) {
+            document.getElementById("hint" + id).textContent =
+                hints[id];
+        }
+    </script>
+
+</body>
+</html>
